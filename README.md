@@ -1,1 +1,66 @@
 # Med_Lab_Analysis
+
+Project: Med Lab Analysis
+
+This repository contains an exploratory data analysis (EDA) and visualization notebook for a private medical diagnostic laboratory dataset. The goal is to provide business insights about revenue drivers, result turnaround times, patient retention, and referral sources to support operational and marketing decisions.
+
+Contents
+- `Data/` - raw and cleaned CSV files used by the notebook
+	- `Data.csv` — original dataset (test transactions)
+	- `Med_Lab_Cleaned.csv` — cleaned dataset produced by the notebook
+- `Notebooks/MLA.ipynb` — the main analysis notebook (data cleaning, EDA, visualizations)
+- `requirements.txt` — Python dependencies used for the analysis
+
+Key analyses performed
+- Revenue by test category and test type
+- Distribution of result turnaround times by test category and peak/off-peak periods
+- New vs returning patient analysis and average spending
+- Referral source contribution to patient counts and revenue
+- Monthly trends for revenue and patient flow (correlation analysis)
+
+Quickstart (Windows PowerShell)
+1. Create a Python virtual environment (recommended)
+
+```powershell
+python -m venv .venv
+; .\.venv\Scripts\Activate.ps1
+```
+
+2. Install dependencies
+
+```powershell
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+3. Run the analysis notebook
+
+Open `Notebooks/MLA.ipynb` in Jupyter / VS Code and run the cells in order. The notebook reads the data from `Data/Data.csv`, performs cleaning, saves `Notebooks/Med_Lab_Cleaned.csv`, and generates several PNG charts in the notebook's working directory.
+
+Notes on data cleaning
+- The notebook coerces the `Result Time (Hrs)` column to numeric and fills missing values using the column median.
+- Common misspellings in categorical columns (e.g., `Uknown` -> `Unknown`) are normalized and missing referral sources are filled with `Unknown`.
+
+Outputs
+- PNG charts saved by the notebook (examples):
+	- `Revenue_by_Test_Category.png`
+	- `Top_10_Test_Types_by_Revenue.png`
+	- `Result_Time_by_Category_and_Time_Period.png`
+	- `Average_Spending_by_Patient_Type.png`
+	- `Revenue_by_Referral_Source.png`
+	- `Monthly_Revenue.png`
+	- `Monthly_Patient_Flow.png`
+	- `Revenue_vs_Patient_Flow.png`
+
+Troubleshooting
+- If you see TypeError or other issues when computing statistics on `Result Time (Hrs)`, ensure the notebook cell that handles missing values has been executed. That cell coerces `Result Time (Hrs)` to numeric with `pd.to_numeric(..., errors='coerce')` and fills NaNs with the median.
+- If plots do not render in VS Code, try running the notebook in Jupyter Lab/Notebook or ensure `%matplotlib inline` (or proper backend) is set.
+
+Contributing
+- Feel free to open issues or submit pull requests to improve cleaning, add analyses, or include model-based forecasting.
+
+License
+- This repository contains example analysis code and is provided as-is for educational and internal use.
+
+Contact
+- For questions about the analysis or data, open an issue in the repository.
