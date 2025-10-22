@@ -1,7 +1,5 @@
 # Med_Lab_Analysis
 
-Project: Med Lab Analysis
-
 This repository contains an exploratory data analysis (EDA) and visualization notebook for a private medical diagnostic laboratory dataset. The goal is to provide business insights about revenue drivers, result turnaround times, patient retention, and referral sources to support operational and marketing decisions.
 
 ## Project Structure
